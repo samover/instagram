@@ -29,6 +29,15 @@ feature 'features for posting photos' do
         expect(page).to have_content 'An example of photo upload'
         expect(page).to have_xpath("//img[contains(@src, 'first_upload.jpg')]")
       end
+
+      scenario 'a post shows how long ago it was created' do
+        photo = fixture_file_upload('files/first_upload.jpg', 'image/jpg')
+        post = Post.new(caption: 'My first upload', image: photo)
+        post.created_at = DateTime.now - 20.minutes
+        post.save
+        visit '/'
+        expect(page).to have_content '20 minutes ago' 
+      end
     end
   end
 

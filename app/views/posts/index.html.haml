@@ -1,6 +1,8 @@
 = link_to 'Add photo', new_post_path 
 - if @posts.any?
   - @posts.each do |post|
+    %p.heading= time_ago_in_words post.created_at
+    ago
     = image_tag post.image(:medium)
     %p.caption= post.caption
 - else
