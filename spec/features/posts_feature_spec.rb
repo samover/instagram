@@ -40,5 +40,13 @@ feature 'photo-posts' do
       expect(page).to have_content 'error'
       expect(page).not_to have_xpath("//img[contains(@src, 'first_upload.jpg')]")
     end
+
+    scenario 'a user cannot create a post without a caption' do
+      page.attach_file 'post_image', Rails.root + 'spec/fixtures/files/first_upload.jpg'
+      fill_in 'Caption', with: 'Ab'
+      click_button 'Add photo'
+      expect(page).to have_content 'error'
+      expect(page).not_to have_content 'Ab'
+    end
   end
 end

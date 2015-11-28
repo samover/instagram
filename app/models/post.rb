@@ -3,5 +3,5 @@ class Post < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   validates_attachment :image, presence: true
 
-  validates :caption, presence: true
+  validates :caption, presence: true, length: { minimum: 3 }
 end
