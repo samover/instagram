@@ -1,2 +1,7 @@
-No photos posted yet
 = link_to 'Add photo', new_post_path 
+- if @posts.any?
+  - @posts.each do |post|
+    = image_tag post.image
+    %p.caption= post.caption
+- else
+  %h2 No photos posted yet

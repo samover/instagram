@@ -34,7 +34,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Added for app functionality
 gem 'haml'
-
+gem 'haml-rails'
+gem 'paperclip'
 
 # Developement and test
 group :test do
