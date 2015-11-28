@@ -23,3 +23,18 @@ Way of proceeding
 
 *Of course, in a real life situation I would write these out in dialogue with a client... so for the purpose of this challenge I will attempt the daring feat of begin both developer AND client.*
 
+Client requirements
+-------------------
+```bash
+As a user
+So that I can use this instagram_clone
+I would like to sign up and sign in for the app
+
+As a user
+So that I can post a picture
+I would like to upload a picture
+
+As a user
+So that I can tag a picture
+I would like to write a caption to an uploaded picture
+```
