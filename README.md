@@ -31,6 +31,10 @@ So that I can use this instagram_clone
 I would like to sign up and sign in for the app
 
 As a user
+So that I can use this instagram clone
+I would like to log in with my facebook details
+
+As a user
 So that I can post a picture
 I would like to upload a picture with a caption
 
