@@ -33,10 +33,15 @@ feature 'features for posting photos' do
       scenario 'a post shows how long ago it was created' do
         photo = fixture_file_upload('files/first_upload.jpg', 'image/jpg')
         post = Post.new(caption: 'My first upload', image: photo)
+        post.user_id = User.all.last.id 
         post.created_at = DateTime.now - 20.minutes
         post.save
         visit '/'
         expect(page).to have_content '20 minutes ago' 
+      end
+
+      scenario 'a post shows the username of the creator' do
+        expect(page).to have_content 'psmith'
       end
     end
   end
