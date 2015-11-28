@@ -1,6 +1,6 @@
 = link_to 'Add photo', new_post_path 
-- if Post.all.any?
-  - Post.all.each do |post|
+- if @posts.any?
+  - @posts.each do |post|
     %p.caption= post.caption
 - else
   %h2 No photos posted yet
