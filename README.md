@@ -1,26 +1,24 @@
 Instagram Challenge
 ===================
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+The challenge this weekend is to build an instagram clone using Ruby on Rails.
+As an MVP, I want a user to be able to
+  
+  * log in using OAuth
+  * post pictures and add a caption
+  * see pictures posted by other users
+  * comment on a picture
+  * like a picture
 
-Task
------
+If I have time, I would like to implement:
 
-Build Instagram: Simple huh!
+  * ability to see a user's profile
+  * add search
 
-Bonus if you can write your own set of sensible user stories!
 
-As usual please start by
+Way of proceeding
+-----------------
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_october2015 (if you haven't already)
-* Forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+  1. Write out the user stories 
+**Of course, in a real life situation I would write these out in dialogue with a client... so for the purpose of this challenge I will attempt the daring feat of begin both developer AND client.**
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
