@@ -38,6 +38,7 @@ gem 'haml-rails'
 gem 'paperclip'
 gem 'devise'
 gem 'figaro'
+gem 'omniauth-facebook'
 
 # Developement and test
 group :test do
