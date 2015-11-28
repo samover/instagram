@@ -34,7 +34,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Added for app functionality
 gem 'haml'
-
+gem 'haml-rails'
 
 # Developement and test
 group :test do
