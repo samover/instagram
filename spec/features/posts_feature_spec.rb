@@ -38,6 +38,10 @@ feature 'features for posting photos' do
         visit '/'
         expect(page).to have_content '20 minutes ago' 
       end
+
+      scenario 'a post shows the username of the creator' do
+        expect(page).to have_content 'psmith'
+      end
     end
   end
 
