@@ -29,5 +29,14 @@ feature 'photo-posts' do
       expect(page).to have_content 'An example of photo upload'
       expect(page).to have_xpath("//img[contains(@src, 'first_upload.jpg')]")
     end
+
+    scenario 'a user cannot create a post without uploading an image' do
+      visit '/posts'
+      click_link 'Add photo'
+      fill_in 'Caption', with: 'An example without a photo upload'
+      click_button 'Add photo'
+      expect(page).not_to have_content 'An example without a photo upload'
+      expect(page).to have_content 'error'
+    end
   end
 end
