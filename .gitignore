@@ -13,3 +13,6 @@
 /tmp
 
 /public/system/posts/
+
+# Ignore application configuration
+/config/application.yml

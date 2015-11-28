@@ -37,6 +37,7 @@ gem 'haml'
 gem 'haml-rails'
 gem 'paperclip'
 gem 'devise'
+gem 'figaro'
 
 # Developement and test
 group :test do
