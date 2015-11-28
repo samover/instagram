@@ -23,7 +23,7 @@ feature 'photo-posts' do
     scenario 'prompt a user to fill in a form, then display the posts' do
       visit '/posts'
       click_link 'Add photo'
-      attach_file 'fixtures/files/example.png'
+      page.attach_file 'post_image', Rails.root + 'spec/fixtures/files/example.jpg'
       fill_in 'Caption', with: 'An example of photo upload'
       click_button 'Add photo'
       expect(page).to have_content 'An example of photo upload'
