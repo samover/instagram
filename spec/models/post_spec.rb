@@ -12,6 +12,12 @@ describe Post, type: :model do
       expect(Post.all.count).to eq 1
     end
 
+    it 'does not allow to save a post without a caption' do
+      post = Post.new(image: @photo)
+      expect(post).to have(1).error_on :caption
+      expect(post).not_to be_valid
+    end
+
     it 'does not allow a post without a photo' do
       post = Post.new(caption: 'An invalid post')
       expect(post).to have(1).error_on :image
