@@ -23,7 +23,7 @@ Way of proceeding
 
 *Of course, in a real life situation I would write these out in dialogue with a client... so for the purpose of this challenge I will attempt the daring feat of begin both developer AND client.*
 
-Client requirements
+[![Stories in Ready](https://badge.waffle.io/samover/instagram-challenge.svg?label=ready&title=Ready)](http://waffle.io/samover/instagram-challenge) Client requirements
 -------------------
 ```bash
 As a user
