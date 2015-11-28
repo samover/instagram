@@ -23,11 +23,11 @@ feature 'photo-posts' do
     scenario 'prompt a user to fill in a form, then display the posts' do
       visit '/posts'
       click_link 'Add photo'
-      page.attach_file 'post_image', Rails.root + 'spec/fixtures/files/example.jpg'
+      page.attach_file 'post_image', Rails.root + 'spec/fixtures/files/first_upload.jpg'
       fill_in 'Caption', with: 'An example of photo upload'
       click_button 'Add photo'
       expect(page).to have_content 'An example of photo upload'
-      expect(page).to have_xpath("//img[contains(@src, \"#{example.png}\")]")
+      expect(page).to have_xpath("//img[contains(@src, 'first_upload.jpg')]")
     end
   end
 end
