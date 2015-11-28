@@ -32,9 +32,11 @@ I would like to sign up and sign in for the app
 
 As a user
 So that I can post a picture
-I would like to upload a picture
+I would like to upload a picture with a caption
 
 As a user
-So that I can tag a picture
-I would like to write a caption to an uploaded picture
+So that I can see other user activity
+I would like to see all posted photos
+
+
 ```
