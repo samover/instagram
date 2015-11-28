@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 describe Post, type: :model do
+  it { is_expected.to belong_to :user}
+
   context '#create' do
     before do
       @photo = fixture_file_upload('files/first_upload.jpg', 'image/jpg')
