@@ -2,7 +2,8 @@
 - if @posts.any?
   - @posts.each do |post|
     .post-container
-      %p.heading= "#{time_ago_in_words post.created_at} ago"
+      %p.time_ago= "#{time_ago_in_words post.created_at} ago"
+      %p.username= post.user
       = image_tag post.image(:medium)
       %p.caption= post.caption
 - else
