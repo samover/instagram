@@ -20,5 +20,6 @@ Way of proceeding
 -----------------
 
   1. Write out the user stories 
-**Of course, in a real life situation I would write these out in dialogue with a client... so for the purpose of this challenge I will attempt the daring feat of begin both developer AND client.**
+
+*Of course, in a real life situation I would write these out in dialogue with a client... so for the purpose of this challenge I will attempt the daring feat of begin both developer AND client.*
 
