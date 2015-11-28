@@ -1,3 +1,12 @@
+- if @post.errors.any?
+  %section#errors
+    %h2
+      = pluralize @post.errors.count, 'error'
+      prevented this post from being added
+    %ul
+      - @post.errors.full_messages.each do |msg|
+        %li= msg
+
 = form_for @post, html: { multipart: true } do |f|
   =f.file_field :image
   =f.label :caption

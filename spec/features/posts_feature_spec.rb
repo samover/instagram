@@ -9,16 +9,6 @@ feature 'photo-posts' do
     end
   end
 
-  context 'a post has been added' do
-    before { Post.create(caption: 'My first post') }
-
-    scenario 'display posts' do
-      visit '/posts'
-      expect(page).to have_content 'My first post'
-      expect(page).not_to have_content 'No photos posted yet'
-    end
-  end
-
   context 'creating posts' do
     scenario 'prompt a user to fill in a form, then display the posts' do
       visit '/posts'
@@ -28,6 +18,15 @@ feature 'photo-posts' do
       click_button 'Add photo'
       expect(page).to have_content 'An example of photo upload'
       expect(page).to have_xpath("//img[contains(@src, 'first_upload.jpg')]")
+    end
+
+    scenario 'a user cannot create a post without uploading an image' do
+      visit '/posts'
+      click_link 'Add photo'
+      fill_in 'Caption', with: 'An example without a photo upload'
+      click_button 'Add photo'
+      expect(page).not_to have_content 'An example without a photo upload'
+      expect(page).to have_content 'error'
     end
   end
 end
