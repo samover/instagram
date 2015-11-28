@@ -10,6 +10,11 @@ feature 'photo-posts' do
   end
 
   context 'creating posts' do
+    before do
+      visit '/posts'
+      click_link 'Add photo'
+    end
+
     scenario 'prompt a user to fill in a form, then display the posts' do
       visit '/posts'
       click_link 'Add photo'
@@ -27,6 +32,21 @@ feature 'photo-posts' do
       click_button 'Add photo'
       expect(page).not_to have_content 'An example without a photo upload'
       expect(page).to have_content 'error'
+    end
+
+    scenario 'a user cannot create a post without a caption' do
+      page.attach_file 'post_image', Rails.root + 'spec/fixtures/files/first_upload.jpg'
+      click_button 'Add photo'
+      expect(page).to have_content 'error'
+      expect(page).not_to have_xpath("//img[contains(@src, 'first_upload.jpg')]")
+    end
+
+    scenario 'a user cannot create a post without a caption' do
+      page.attach_file 'post_image', Rails.root + 'spec/fixtures/files/first_upload.jpg'
+      fill_in 'Caption', with: 'Ab'
+      click_button 'Add photo'
+      expect(page).to have_content 'error'
+      expect(page).not_to have_content 'Ab'
     end
   end
 end
