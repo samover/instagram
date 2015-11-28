@@ -25,7 +25,7 @@ feature 'photo-posts' do
       click_link 'Add photo'
       attach_file 'fixtures/files/example.png'
       fill_in 'Caption', with: 'An example of photo upload'
-      click_button 'Create post'
+      click_button 'Add photo'
       expect(page).to have_content 'An example of photo upload'
       expect(page).to have_xpath("//img[contains(@src, \"#{example.png}\")]")
     end
