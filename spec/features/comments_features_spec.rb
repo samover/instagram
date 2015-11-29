@@ -27,13 +27,13 @@ describe 'features for commenting on posts' do
          click_link 'Add a comment'
          click_button 'Create Comment' 
          expect(page).to have_content 'error'
-         expect(current_path).to eq '/posts/new'
+         expect(page).not_to have_content 'This is a comment'
        end
 
        scenario 'a comment with less than three leters' do
          post_comment(text: 'ab')
          expect(page).to have_content 'error'
-         expect(current_path).to eq '/posts/new'
+         expect(page).not_to have_content 'ab'
        end
      end
   end
