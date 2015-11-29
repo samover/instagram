@@ -114,6 +114,7 @@ feature 'features for posting photos' do
       it 'cannot delete someone else post' do
         sign_out
         sign_up(email: 'sam@makers.com', password: 'password')
+        visit '/posts'
         expect(page).not_to have_content 'Delete post'
       end
     end
@@ -121,7 +122,39 @@ feature 'features for posting photos' do
     context 'when a user is not logged in' do
       it 'cannot delete a post' do
         sign_out
+        visit '/posts'
         expect(page).not_to have_content 'Delete post'
+      end
+    end
+  end
+
+  context 'editing a post' do
+    before do
+      sign_up
+      post_photo
+    end
+
+    context 'when a user is logged in' do
+      it 'can edit his own post' do
+        visit '/posts'
+        click_link 'Edit post'
+        fill_in 'Caption', with: 'My edited post'
+        click_link 'Edit post'
+        expect(page).to have_content 'My edited post'
+      end
+
+      it 'cannot edit someone else post' do
+        sign_out
+        sign_up(email: 'sam@makers.com', password: 'password')
+        visit '/posts'
+        expecct(page).not_to have_content 'Edit post'
+      end
+    end
+    context 'when a user is not logged in' do
+      it 'cannot edit a post' do
+        sign_out
+        visit '/posts'
+        expecct(page).not_to have_content 'Edit post'
       end
     end
   end
