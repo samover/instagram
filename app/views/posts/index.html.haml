@@ -10,8 +10,11 @@
         = link_to 'Delete post', post_path(post), method: :delete 
         = link_to 'Edit post', edit_post_path(post)
       .likes
-        = link_to 'Like', post_likes_path(post), method: :post
-        %p= pluralize post.likes.count, 'like'
+        - if post.likes.any? { |like| like.user == current_user }
+          = link_to 'Unlike'
+        - else
+          = link_to 'Like', post_likes_path(post), method: :post
+          %p= pluralize post.likes.count, 'like'
       - if post.comments.any?
         These are commments
         - post.comments.each do |comment|
