@@ -7,7 +7,7 @@ FactoryGirl.define do
 
   factory :post do
     caption 'An example post'
-    image { fixture_file_upload('files/first_upload.jpg', 'image/jpg') }
+    image { fixture_file_upload(Rails.root + 'spec/fixtures/files/first_upload.jpg', 'image/jpg') }
   end
 
   factory :comment do
