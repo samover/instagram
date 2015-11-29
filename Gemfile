@@ -40,13 +40,15 @@ gem 'devise'
 gem 'figaro'
 gem 'omniauth-facebook'
 
-# Developement and test
+# Development and test
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'shoulda'
   gem 'rspec-collection_matchers'
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
 
 group :development, :test do

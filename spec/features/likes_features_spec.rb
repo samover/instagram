@@ -9,35 +9,37 @@ describe 'features for liking a post' do
   end
   
   context 'liking posts' do
-    scenario 'there is a link to like a post' do
+    it 'has a link to like a post' do
       within('div.likes') do
         expect(page).to have_link 'Like'
       end
     end
 
-    scenario 'a user can like a post' do
+    it 'can like it once and increases the likes by one', js: true do
       click_link 'Like'
       within('div.likes') do
         expect(page).to have_content '1 like'
       end
     end
 
-    scenario 'a user can not like a post twice, but can unlike' do
+    it 'cannot like it more than once', js: true do
       click_link 'Like'
       within('div.likes') do
         expect(page).not_to have_link 'Like'
         expect(page).to have_link 'Unlike'
       end
     end
+  end
 
-    scenario 'a user can unlike a post' do
+  context 'unliking a post', js: true do
+    it 'decreases the count of likes by one' do
       click_link 'Like'
       within('div.likes') do
         expect(page).to have_content '1 like'
       end
       click_link 'Unlike'
       within('div.likes') do
-      expect(page).to have_content '0 likes'
+        expect(page).to have_content '0 likes'
       end
     end
   end
