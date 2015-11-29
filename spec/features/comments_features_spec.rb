@@ -17,7 +17,7 @@ describe 'features for commenting on posts' do
        sign_out
        visit '/posts'
        click_link 'Add a comment'
-       expect(page).not_to have_link 'Add a comment'
+       expect(page).not_to have_link 'Create comment'
        expect(current_path).to eq '/users/sign_in'
      end
   end
@@ -62,10 +62,11 @@ describe 'features for commenting on posts' do
     scenario 'a user can edit her own comment' do
       click_link 'Edit comment'
       fill_in 'Text', with: 'This is an updated comment'
-      click_button 'Edit comment'
+      click_button 'Update Comment'
       expect(current_path).to eq '/posts'
       expect(page).not_to have_content 'This is a comment'
       expect(page).to have_content 'This is an updated comment'
+      expect(page).to have_content 'Comment updated succesfully'
     end
 
     scenario 'a user cannot edit someone else comment' do
