@@ -17,6 +17,7 @@
             %p.comment-user= fetch_username(comment.user_id)
             - if comment.user == current_user
               = link_to 'Delete comment', post_comment_path(post, comment), method: :delete 
+              = link_to 'Edit comment', edit_post_comment_path(post, comment)
       = link_to 'Add a comment', new_post_comment_path(post)
 - else
   %h2 No photos posted yet
