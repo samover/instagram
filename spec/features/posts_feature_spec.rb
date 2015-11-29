@@ -139,7 +139,7 @@ feature 'features for posting photos' do
         visit '/posts'
         click_link 'Edit post'
         fill_in 'Caption', with: 'My edited post'
-        click_link 'Edit post'
+        click_button 'Edit post'
         expect(page).to have_content 'My edited post'
       end
 
@@ -147,14 +147,14 @@ feature 'features for posting photos' do
         sign_out
         sign_up(email: 'sam@makers.com', password: 'password')
         visit '/posts'
-        expecct(page).not_to have_content 'Edit post'
+        expect(page).not_to have_content 'Edit post'
       end
     end
     context 'when a user is not logged in' do
       it 'cannot edit a post' do
         sign_out
         visit '/posts'
-        expecct(page).not_to have_content 'Edit post'
+        expect(page).not_to have_content 'Edit post'
       end
     end
   end
