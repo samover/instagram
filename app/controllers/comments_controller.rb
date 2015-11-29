@@ -16,6 +16,14 @@ class CommentsController < ApplicationController
     redirect_to '/posts'
   end
 
+  def destroy
+    comment = Comment.find(params[:id])
+    comment.destroy if comment.user == current_user
+    flash[:notice] = 'Comment deleted succesfully'  
+
+    redirect_to '/posts'
+  end
+
   def comment_params
     params.require(:comment).permit(:text)
   end

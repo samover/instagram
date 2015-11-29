@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  
+
   before_action :authenticate_user!, except: [:index]
 
   def index
@@ -24,6 +24,7 @@ class PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     post.destroy if post.user == current_user
+    flash[:notice] = 'Post deleted succesfully'
 
     redirect_to '/posts'
   end
