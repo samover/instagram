@@ -89,13 +89,40 @@ feature 'features for posting photos' do
         expect(page).not_to have_content 'Ab'
       end
     end
+
+    context 'when user is not logged in' do
+      scenario 'prompt to log in' do
+        visit '/posts'
+        click_link 'Add photo'
+        expect(current_path).to eq '/users/sign_in'
+      end
+    end
   end
 
-  context 'when user is not logged in' do
-    scenario 'prompt to log in' do
-      visit '/posts'
-      click_link 'Add photo'
-      expect(current_path).to eq '/users/sign_in'
+  context 'deleting a post' do
+    before do
+      sign_up
+      post_photo
+    end
+
+    context 'when a user is logged in' do
+      it 'can delete his own post' do
+        visit '/posts'
+        click_link 'Delete post'
+        expect(page).not_to have_content 'An example of photo upload'
+      end
+      it 'cannot delete someone else post' do
+        sign_out
+        sign_up(email: 'sam@makers.com', password: 'password')
+        expect(page).not_to have_content 'Delete post'
+      end
+    end
+
+    context 'when a user is not logged in' do
+      it 'cannot delete a post' do
+        sign_out
+        expect(page).not_to have_content 'Delete post'
+      end
     end
   end
 end
