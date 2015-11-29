@@ -19,9 +19,9 @@ def post_photo
   click_button 'Add photo'
 end
 
-def post_comment
+def post_comment(text: 'This is a comment')
   visit '/posts'
   click_link 'Add a comment'
-  fill_in 'Text', with: 'This is a comment' 
+  fill_in 'Text', with: text 
   click_button 'Add a comment'
 end
