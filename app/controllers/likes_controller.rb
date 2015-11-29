@@ -8,9 +8,10 @@ class LikesController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:post_id])
     like = Like.find(params[:id])
     like.destroy if like.user == current_user
     
-    redirect_to '/posts'
+    render json: { new_likes_count: @post.likes.count }
   end
 end
