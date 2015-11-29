@@ -50,4 +50,35 @@ describe 'features for commenting on posts' do
       expect(page).not_to have_link 'Delete comment'
     end
   end
+
+  context 'editing comments' do
+    before do
+      sign_up
+      post_photo
+      post_comment
+      visit '/posts'
+    end
+
+    scenario 'a user can edit her own comment' do
+      click_link 'Edit comment'
+      fill_in 'Text', with: 'This is an updated comment'
+      click_button 'Edit comment'
+      expect(current_path).to eq '/posts'
+      expect(page).not_to have_content 'This is a comment'
+      expect(page).to have_content 'This is an updated comment'
+    end
+
+    scenario 'a user cannot edit someone else comment' do
+      sign_out
+      sign_up(email: 'sam@makers.com')
+      visit '/posts'
+      expect(page).not_to have_link 'Edit comment'
+    end
+
+    scenario 'a not logged in user cannot edit a comment' do
+      sign_out
+      visit '/posts'
+      expect(page).not_to have_link 'Edit comment'
+    end
+  end
 end
