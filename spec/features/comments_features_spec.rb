@@ -20,6 +20,22 @@ describe 'features for commenting on posts' do
        expect(page).not_to have_link 'Add a comment'
        expect(current_path).to eq '/users/sign_in'
      end
+
+     context 'invalid comments' do
+       scenario 'a comment without text' do
+         visit '/posts'
+         click_link 'Add a comment'
+         click_button 'Create Comment' 
+         expect(page).to have_content 'error'
+         expect(current_path).to eq '/posts/new'
+       end
+
+       scenario 'a comment with less than three leters' do
+         post_comment(text: 'ab')
+         expect(page).to have_content 'error'
+         expect(current_path).to eq '/posts/new'
+       end
+     end
   end
 
   context 'deleting comments' do

@@ -11,9 +11,12 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(comment_params)
     @comment.user = current_user
-    @post.save
 
-    redirect_to '/posts'
+    if @post.save
+      redirect_to '/posts'
+    else
+      render :new
+    end
   end
 
   def destroy
