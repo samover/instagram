@@ -10,7 +10,7 @@
         = link_to 'Delete post', post_path(post), method: :delete 
         = link_to 'Edit post', edit_post_path(post)
       .likes
-        = link_to 'Like'
+        = link_to 'Like', post_likes_path(post), method: :post
       - if post.comments.any?
         These are commments
         - post.comments.each do |comment|
