@@ -9,6 +9,8 @@
       - if post.user == current_user
         = link_to 'Delete post', post_path(post), method: :delete 
         = link_to 'Edit post', edit_post_path(post)
+      .likes
+        = link_to 'Like'
       - if post.comments.any?
         These are commments
         - post.comments.each do |comment|
