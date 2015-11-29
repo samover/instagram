@@ -112,6 +112,7 @@ feature 'features for posting photos' do
         expect(page).not_to have_content 'An example of photo upload'
         expect(page).to have_content 'Post deleted succesfully'
       end
+
       it 'cannot delete someone else post' do
         sign_out
         sign_up(email: 'sam@makers.com', password: 'password')

@@ -16,6 +16,19 @@ class CommentsController < ApplicationController
     redirect_to '/posts'
   end
 
+  def edit
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
+  end
+
+  def update
+    comment = Comment.find(params[:id])
+    comment.update(comment_params) if comment.user == current_user
+    flash[:notice] = 'Comment updated succesfully'
+
+    redirect_to '/posts'
+  end
+
   def destroy
     comment = Comment.find(params[:id])
     comment.destroy if comment.user == current_user
