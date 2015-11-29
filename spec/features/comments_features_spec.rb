@@ -34,6 +34,7 @@ describe 'features for commenting on posts' do
       click_link 'Delete comment'
       expect(current_path).to eq '/posts'
       expect(page).not_to have_content 'This is a comment'
+      expect(page).to have_content 'Comment deleted succesfully'
     end
 
     scenario 'a user who does not own the comment cannot delete it' do
