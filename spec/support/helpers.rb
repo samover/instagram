@@ -18,3 +18,10 @@ def post_photo
   fill_in 'Caption', with: 'An example of photo upload'
   click_button 'Add photo'
 end
+
+def post_comment
+  visit '/posts'
+  click_link 'Add a comment'
+  fill_in 'Text', with: 'This is a comment' 
+  click_button 'Add a comment'
+end
