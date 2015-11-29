@@ -1,4 +1,13 @@
+- if @comment.errors.any?
+  %section#errors
+    %h2
+      = pluralize @comment.errors.count, 'error'
+      prevented this post from being added
+    %ul
+      - @comment.errors.full_messages.each do |msg|
+        %li= msg
+
 = form_for [@post, @comment] do |f|
   = f.label :text
   = f.text_field :text
-  = f.submit 'Add a comment'
+  = f.submit

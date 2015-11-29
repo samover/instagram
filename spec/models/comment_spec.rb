@@ -7,7 +7,7 @@ describe Comment do
 
     it 'does not allow to save a post without text' do
       comment = Comment.new
-      expect(comment).to have(1).error_on :text
+      expect(comment).to have(2).error_on :text
       expect(comment).not_to be_valid
     end
 
