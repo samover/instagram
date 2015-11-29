@@ -29,5 +29,16 @@ describe 'features for liking a post' do
         expect(page).to have_link 'Unlike'
       end
     end
+
+    scenario 'a user can unlike a post' do
+      click_link 'Like'
+      within('div.likes') do
+        expect(page).to have_content '1 like'
+      end
+      click_link 'Unlike'
+      within('div.likes') do
+        expect(page).to have_content '0 likes'
+      end
+    end
   end
 end
