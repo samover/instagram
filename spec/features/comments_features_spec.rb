@@ -15,5 +15,13 @@ describe 'features for commenting on posts' do
       click_button 'Add a comment'
       expect(page).to have_content 'This is a comment'
     end
+
+     scenario 'a not logged in user cannot comment without signin in' do
+       sign_out
+       visit '/posts'
+       click_link 'Add a comment'
+       expect(page).not_to have_content 'Add a comment'
+       expect(current_path).to eq '/users/sign_in'
+     end
   end
 end
