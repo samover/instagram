@@ -11,9 +11,9 @@
         = link_to 'Edit post', edit_post_path(post)
       .likes
         - if post.likes.any? { |like| like.user == current_user }
-          = link_to 'Unlike', post_like_path(post, Like.find_by(user_id: current_user.id)), method: :delete 
+          = link_to image_tag('unliked.png', size: '16', title: 'Unlike') , post_like_path(post, Like.find_by(user_id: current_user.id)), method: :delete, class: 'heart' 
         - else
-          = link_to 'Like', post_likes_path(post), method: :post
+          = link_to image_tag('liked.png', size: '16', title: 'Like'), post_likes_path(post) , method: :post, class: 'heart'
         %p= pluralize post.likes.count, 'like'
       - if post.comments.any?
         These are commments
