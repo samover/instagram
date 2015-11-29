@@ -10,7 +10,6 @@
         = link_to 'Delete post', post_path(post), method: :delete 
         = link_to 'Edit post', edit_post_path(post)
       - if post.comments.any?
-        These are commments
         - post.comments.each do |comment|
           .comment-containter
             %p.comment-text= comment.text
