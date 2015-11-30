@@ -40,6 +40,11 @@ gem 'devise'
 gem 'figaro'
 gem 'omniauth-facebook'
 
+# Production only
+group :production do
+  gem 'rails_12factor'
+end
+
 # Developement and test
 group :test do
   gem 'rspec-rails'
