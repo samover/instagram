@@ -45,7 +45,12 @@ group :production do
   gem 'rails_12factor'
 end
 
+group :production, :development do
+  gem 'aws-sdk'
+end
+
 # Developement and test
+
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
