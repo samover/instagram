@@ -43,9 +43,6 @@ gem 'omniauth-facebook'
 # Production only
 group :production do
   gem 'rails_12factor'
-end
-
-group :production, :development do
   gem 'aws-sdk', '< 2.0'
 end
 
