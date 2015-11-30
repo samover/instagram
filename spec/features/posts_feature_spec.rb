@@ -5,6 +5,7 @@ feature 'features for posting photos' do
   context 'viewing posts' do
     context 'no photos have been posted' do
       scenario 'should prompt a user to upload an photo' do
+        sign_up
         visit '/posts'
         expect(page).to have_link 'Add photo'
         expect(page).to have_content 'No photos posted yet'
@@ -23,9 +24,9 @@ feature 'features for posting photos' do
         expect(page).to have_xpath("//img[contains(@src, 'first_upload.jpg')]")
       end
 
-      scenario 'a user who is not logged in can see all posts' do
+      scenario 'a user who is not logged can see posts' do
         sign_out
-        visit '/'
+        visit '/posts'
         expect(page).to have_content 'An example of photo upload'
         expect(page).to have_xpath("//img[contains(@src, 'first_upload.jpg')]")
       end
@@ -87,14 +88,6 @@ feature 'features for posting photos' do
         click_button 'Add photo'
         expect(page).to have_content 'error'
         expect(page).not_to have_content 'Ab'
-      end
-    end
-
-    context 'when user is not logged in' do
-      scenario 'prompt to log in' do
-        visit '/posts'
-        click_link 'Add photo'
-        expect(current_path).to eq '/users/sign_in'
       end
     end
   end

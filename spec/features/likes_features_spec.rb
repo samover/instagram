@@ -11,31 +11,31 @@ describe 'features for liking a post' do
   context 'liking posts' do
     scenario 'there is a link to like a post' do
       within('div.likes') do
-        expect(page).to have_link 'Like'
+        expect(page).to have_xpath("//img[contains(@title, 'Like')]")
       end
     end
 
     scenario 'a user can like a post' do
-      click_link 'Like'
+      find(:xpath, "//a/img[@alt='Unliked']/..").click
       within('div.likes') do
         expect(page).to have_content '1 like'
       end
     end
 
     scenario 'a user can not like a post twice, but can unlike' do
-      click_link 'Like'
+      find(:xpath, "//a/img[@alt='Unliked']/..").click
       within('div.likes') do
-        expect(page).not_to have_link 'Like'
-        expect(page).to have_link 'Unlike'
+        expect(page).not_to have_xpath("//img[contains(@title, 'Like')]")
+        expect(page).to have_xpath("//img[contains(@title, 'Unlike')]")
       end
     end
 
     scenario 'a user can unlike a post' do
-      click_link 'Like'
+      find(:xpath, "//a/img[@alt='Unliked']/..").click
       within('div.likes') do
         expect(page).to have_content '1 like'
       end
-      click_link 'Unlike'
+      find(:xpath, "//a/img[@alt='Liked']/..").click
       within('div.likes') do
       expect(page).to have_content '0 likes'
       end
