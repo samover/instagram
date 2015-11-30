@@ -7,12 +7,18 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => false
     = csrf_meta_tags
   %body
-    - if user_signed_in?
-      = link_to 'Sign out', destroy_user_session_path, method: :delete
-    - else
-      = link_to 'Sign in', new_user_session_path
-      = link_to 'Sign up', new_user_registration_path 
-
-    = notice
-    = alert
-    = yield
+    .navbar.navbar-default.navbar-static-top
+      .jumbotron
+        = link_to image_tag('instagram_logo.png', class: 'logo'), '/'
+        %ul.nav.navbar-nav.pull-right
+          - if user_signed_in?
+            %li= link_to 'Add photo', new_post_path 
+            %li= link_to "Sign out #{fetch_username(current_user.id)}", destroy_user_session_path, method: :delete
+          - else
+            %li= link_to 'View posts', posts_path
+            %li= link_to 'Sign in', new_user_session_path
+            %li= link_to 'Sign up', new_user_registration_path
+    .container
+      = notice
+      = alert
+      = yield

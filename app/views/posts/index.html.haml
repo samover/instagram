@@ -1,29 +1,70 @@
-= link_to 'Add photo', new_post_path 
-- if @posts.any?
-  - @posts.each do |post|
-    .post-container
-      %p.time_ago= "#{time_ago_in_words post.created_at} ago"
-      %p.username= fetch_username(post.user_id)
-      = image_tag post.image(:medium)
-      %p.caption= post.caption
-      - if post.user == current_user
-        = link_to 'Delete post', post_path(post), method: :delete 
-        = link_to 'Edit post', edit_post_path(post)
-      .likes
-        - if post.likes.any? { |like| like.user == current_user }
-          = link_to image_tag('unliked.png', size: '16', title: 'Unlike') , post_like_path(post, Like.find_by(user_id: current_user.id)), method: :delete, class: 'heart' 
-        - else
-          = link_to image_tag('liked.png', size: '16', title: 'Like'), post_likes_path(post) , method: :post, class: 'heart'
-        %p= pluralize post.likes.count, 'like'
-      - if post.comments.any?
-        These are commments
-        - post.comments.each do |comment|
-          .comment-containter
-            %p.comment-text= comment.text
-            %p.comment-user= fetch_username(comment.user_id)
-            - if comment.user == current_user
-              = link_to 'Delete comment', post_comment_path(post, comment), method: :delete 
-              = link_to 'Edit comment', edit_post_comment_path(post, comment)
-      = link_to 'Add a comment', new_post_comment_path(post)
-- else
-  %h2 No photos posted yet
+.row
+  .col-md-6.col-md-offset-3.content
+    - if @posts.any?
+      - @posts.each do |post|
+        .post-container
+          .post-header
+            %p.username.pull-left= fetch_username(post.user_id)
+            %p.time_ago.pull-right= "#{time_ago_in_words post.created_at} ago"
+          %p.caption= post.caption
+          = image_tag post.image(:medium)
+          .post-controls.pull-right
+            - if post.user == current_user
+              = link_to 'Delete post', post_path(post), method: :delete
+              = link_to 'Edit post', edit_post_path(post)
+          .likes.pull-left
+            - if post.likes.any? { |like| like.user == current_user }
+              = link_to image_tag('liked.png', size: '16', title: 'Unlike') , post_like_path(post, Like.find_by(user_id: current_user.id)), method: :delete, class: 'heart'
+            - else
+              = link_to image_tag('unliked.png', size: '16', title: 'Like'), post_likes_path(post) , method: :post, class: 'heart'
+            = pluralize post.likes.count, 'like'
+          %p
+          .comment-container
+            - if post.comments.any?
+              - post.comments.each do |comment|
+                %p
+                  %span.comment-user= fetch_username(comment.user_id)
+                  \: 
+                  = comment.text
+                  %span.comment-controls.pull-right
+                    - if comment.user == current_user
+                      = link_to 'Delete comment', post_comment_path(post, comment), method: :delete
+                      = link_to 'Edit comment', edit_post_comment_path(post, comment)
+            .comment-add= link_to 'Add a comment', new_post_comment_path(post)
+    - else
+      %h2 No photos posted yet
+
+
+
+      -#     %img.img-responsive{"ng-src" => ""}/
+      -#   .col-xs-6
+      -#     .caption
+      -#       %h5
+      -#         %a{:href => "http://instagram.com/"}
+      -#       %h6.text-muted
+      -#         %i.ion-clock
+      -#         NaN/NaN/aN NaN:NaN PM
+      -#       %p
+      -# .row
+      -#   .col-xs-12
+      -#     %h5
+      -#       %i.ion-heart.text-danger
+      -#        likes
+      -#     %hr.soften/
+      -#     %h5.text-center
+      -#       %i.ion-chatbox-working.text-primary
+      -#       Comments
+      -#     %ul.media-list
+      -#       %li.media{"ng-repeat" => "comment in photo.comments.data"}
+      -#         %a.pull-left{:href => "http://instagram.com/"}
+      -#           %img.media-object.img-rounded{"ng-src" => ""}/
+      -#         .media-body
+      -#           %a.media-heading{:href => "http://instagram.com/"} @
+      -#
+      -#       %li{"ng-if" => "!photo.comments.data.length"} No comments
+      -#     %hr.soften/
+      -#     .btn-group
+      -#       %button.btn{"ng-class" => "{ 'btn-danger': hasLiked, 'btn-default': !hasLiked }", "ng-click" => "like()"}
+      -#         %i.ion-heart{"ng-class" => "{ 'text-danger': !hasLiked}"}
+      -#         %span{"ng-if" => "hasLiked"} Liked
+      -#         %span{"ng-if" => "!hasLiked"} Like
