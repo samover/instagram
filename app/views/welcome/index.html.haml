@@ -1,0 +1,15 @@
+.row
+  .jumbotron
+    %h2
+      Instagram
+    %p
+      This is a basic Instagram clone built during
+      = link_to 'Makers Academy', 'http://www.makersacademy.com'
+      \. To continue, please log in with your Facebook account or create a new email account.
+    %p
+      %a.btn.btn-lg.btn-success{:href => "/users/sign_in"}
+        %i.ion-log-in
+        Sign in
+      %a.btn.btn-lg.btn-primary{:href => "/users/sign_up"}
+        %i.ion-person-add
+        Create account
