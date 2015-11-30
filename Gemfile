@@ -46,7 +46,7 @@ group :production do
 end
 
 group :production, :development do
-  gem 'aws-sdk'
+  gem 'aws-sdk', '< 2.0'
 end
 
 # Developement and test
