@@ -1,7 +1,7 @@
 Instaclone
 ===================
 
-At Makers Academy we receive a weekend challenge after learning a new technology for a week. This is an instagram clone using Ruby on Rails. It is fully test driven using rspec, capybara and factorygirl. 
+At Makers Academy we receive a weekend challenge after learning a new technology for a week. This is an instagram clone using Ruby on Rails. It is fully test driven using rspec, capybara and factorygirl. There is a working example on [Heroku](http://instaclone-challenge.herokuapp.com/).
 
 As an MVP, this instaclone lets users:
   
@@ -41,3 +41,17 @@ So that I can see other user activity
 I would like to see all posted photos
 
 ```
+
+How to use the repo?
+---------------
+* Clone the Repo
+* run the following:
+  * `bundle install`
+  * `createdb chitter_development`
+  * `createdb chitter_test`
+  * `rake db:dm_migrate`
+  * `rake db:dm_migrate RACK_ENV=test`
+* run tests: `rspec`
+* run local chitter:
+  * `rackup`
+  * visit `localhost:9292`
