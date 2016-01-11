@@ -1,8 +1,9 @@
-Instagram Challenge
+Instaclone
 ===================
 
-The challenge this weekend is to build an instagram clone using Ruby on Rails.
-As an MVP, I want a user to be able to
+At Makers Academy we receive a weekend challenge after learning a new technology for a week. This is an instagram clone using Ruby on Rails. It is fully test driven using rspec, capybara and factorygirl. 
+
+As an MVP, this instaclone lets users:
   
   * log in using OAuth
   * post pictures and add a caption
@@ -10,20 +11,17 @@ As an MVP, I want a user to be able to
   * comment on a picture
   * like a picture
 
-If I have time, I would like to implement:
+If I find the time, I would also like to implement:
 
   * ability to see a user's profile
   * add search
 
 
-Way of proceeding
+User Stories
 -----------------
-
-  1. Write out the user stories 
 
 *Of course, in a real life situation I would write these out in dialogue with a client... so for the purpose of this challenge I will attempt the daring feat of begin both developer AND client.*
 
-[![Stories in Ready](https://badge.waffle.io/samover/instagram-challenge.svg?label=ready&title=Ready)](http://waffle.io/samover/instagram-challenge) Client requirements
 -------------------
 ```bash
 As a user
@@ -41,6 +39,5 @@ I would like to upload a picture with a caption
 As a user
 So that I can see other user activity
 I would like to see all posted photos
-
 
 ```
